@@ -1,0 +1,19 @@
+<!-- trigger chromeAutoPlay  -->
+<iframe src="../../assets/silence.mp3" allow="autoplay" id="audio" style="display:none"></iframe>
+
+<div class="container">
+  <mat-spinner color="warn" *ngIf="isLoading"></mat-spinner>
+
+  <ng-container *ngIf="!isLoading">
+    <div class="bg"></div>
+    <div class="rank-button" routerLink="/nba">
+      <span class="rank-button-text">go!</span>
+      <!-- <span class="rank-button-text">Ranking</span> -->
+    </div>
+  </ng-container>
+  <button mat-mini-fab (click)="handleAudio()" class="toggle-audio" color="warn" *ngIf="!isLoading">
+    <mat-icon aria-label="icon-button with a volume icon">
+      {{ audioIsPlaying ? 'volume_up' : 'volume_off' }}
+    </mat-icon>
+  </button>
+</div>

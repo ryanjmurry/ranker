@@ -1,0 +1,59 @@
+@import '../../theme.scss';
+// $pink: #ff3466;
+
+.bg,
+.rank-button {
+  position: absolute;
+  height: 200px;
+  width: 200px;
+  border-radius: 100%;
+  background: $green;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.bg {
+  animation: pulse 0.7s infinite;
+}
+
+.rank-button {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  color: #ffffff;
+
+  .rank-button-text {
+    font-size: 72px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+}
+
+.toggle-audio {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
