@@ -1,0 +1,21 @@
+@import '../theme.scss';
+
+.brand {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.brand:active,
+.brand:focus {
+  outline: 0;
+  border: none;
+}
+
+.body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 56px;
+  bottom: 0;
+  background-color: $primary;
+}
