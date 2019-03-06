@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RankerComponent } from './ranker/ranker.component';
 import { ErrorComponent } from './shared/components/error/error.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/nba', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'nba', component: RankerComponent },
   { path: '**', component: ErrorComponent }
 ];
