@@ -1,0 +1,12 @@
+<div class="flexbox">
+  <mat-spinner *ngIf="loading; else loaded" color="warn"></mat-spinner>
+</div>
+<ng-template #loaded class="flexbox">
+  <mat-card *ngFor="let player of playerList">
+    <mat-card-header>
+      <mat-card-title>{{ player.firstName }} {{ player.lastName }}</mat-card-title>
+      <mat-card-subtitle>{{ player.team.city }} {{ player.team.name }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{ player.img }}" alt="Nba player photo" />
+  </mat-card>
+</ng-template>

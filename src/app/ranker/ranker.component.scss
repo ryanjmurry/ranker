@@ -1,0 +1,46 @@
+// .container {
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100%;
+// }
+
+// .directions {
+//   text-align: center;
+// }
+
+// #arena {
+//   mat-card:nth-of-type(1) {
+//     margin-bottom: 30px;
+//   }
+// }
+
+// #begin-ranking-button {
+//   width: 360px;
+//   height: 72px;
+//   font-size: 28px;
+// }
+
+// @media (min-width: 700px) {
+//   #arena {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//     width: 800px;
+
+//     mat-card:nth-of-type(1) {
+//       margin-bottom: 0;
+//     }
+//   }
+// }
+
+.flexbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 70%;
+  margin: auto;
+  flex-wrap: wrap;
+}

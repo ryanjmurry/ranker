@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../player.model';
 import { NbaService } from '../services/nba.service';
-import { merge, combineLatest } from 'rxjs/operators';
-import { Observable, forkJoin } from 'rxjs';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-ranker',
@@ -10,38 +9,33 @@ import { Observable, forkJoin } from 'rxjs';
   styleUrls: ['./ranker.component.scss']
 })
 export class RankerComponent implements OnInit {
-  loadingInitialData: boolean = false;
-  loadingPlayerData: boolean = false;
-  begunRanking: boolean = false;
-  player1: Player;
-  player2: Player;
+  loading: boolean = false;
   playerIdList: string[] = [];
-  playerList: object[] = [];
+  playerList: Player[] = [];
 
   constructor(private nbaService: NbaService) {}
 
   ngOnInit() {
+    this.loading = true;
     if (localStorage.getItem('playerIdArr')) {
       this.playerIdList = JSON.parse(localStorage.getItem('playerIdArr'));
-      this.loadingInitialData = false;
     } else
       this.nbaService.getAllPlayers().subscribe(data => {
-        this.loadingInitialData = true;
         data.forEach(doc => {
           this.playerIdList.push(doc.payload.doc.id);
         });
         localStorage.setItem('playerIdArr', JSON.stringify(this.playerIdList));
-        this.loadingInitialData = false;
       });
+
+    this.beginRanking();
   }
 
-  handleBeginRanking() {
-    this.begunRanking = true;
+  beginRanking() {
+    this.loading = true;
     this.getNewPlayers();
   }
 
   getNewPlayers(): void {
-    this.loadingPlayerData = true;
     let id1: string;
     let id2: string;
     do {
@@ -54,9 +48,10 @@ export class RankerComponent implements OnInit {
   fetchNewPlayers(id1: string, id2: string) {
     forkJoin(this.nbaService.getPlayer(id1), this.nbaService.getPlayer(id2)).subscribe(
       ([p1, p2]) => {
-        this.player1 = p1;
-        this.player2 = p2;
-        this.loadingPlayerData = false;
+        this.playerList.push(p1);
+        this.playerList.push(p2);
+        console.log(this.playerList);
+        this.loading = false;
       }
     );
   }
