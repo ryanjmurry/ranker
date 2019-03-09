@@ -1,12 +1,23 @@
-<div class="flexbox">
-  <mat-spinner *ngIf="loading; else loaded" color="warn"></mat-spinner>
+<div class="container">
+  <mat-spinner *ngIf="loading" color="warn"></mat-spinner>
+  <div id="player-arena" *ngIf="!loading">
+    <ng-container *ngFor="let player of playerList">
+      <div class="player-container">
+        <mat-card class="player-card mat-elevation-z0">
+          <div class="img-container">
+            <img src="{{ player.img }}" alt="NBA Player" class="player-img" />
+          </div>
+          <img mat-card-avatar src="{{ player.team.logo }}" alt="NBA Logo" class="player-logo" />
+        </mat-card>
+        <div class="info-container">
+          <h1 class="player-name">
+            {{ player.firstName | uppercase }} {{ player.lastName | uppercase }}
+          </h1>
+          <h2 class="player-info">
+            {{ getPlayerPosition(player.position) | uppercase }} {{ getJerseyNumber(player) }}
+          </h2>
+        </div>
+      </div>
+    </ng-container>
+  </div>
 </div>
-<ng-template #loaded class="flexbox">
-  <mat-card *ngFor="let player of playerList">
-    <mat-card-header>
-      <mat-card-title>{{ player.firstName }} {{ player.lastName }}</mat-card-title>
-      <mat-card-subtitle>{{ player.team.city }} {{ player.team.name }}</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{ player.img }}" alt="Nba player photo" />
-  </mat-card>
-</ng-template>
