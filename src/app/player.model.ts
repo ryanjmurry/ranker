@@ -3,11 +3,14 @@ export class Player {
   public firstName: string;
   public lastName: string;
   public jerseyNumber?: string;
+  public position: string;
   public img?: string;
   public team: {
     id?: string;
     city?: string;
     name?: string;
+    abbreviation?: string;
+    logo?: string;
   };
   public overall: {
     wins: number;
