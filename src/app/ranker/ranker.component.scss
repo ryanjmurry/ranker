@@ -1,46 +1,83 @@
-// .container {
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100%;
-// }
+@import '../../theme.scss';
 
-// .directions {
-//   text-align: center;
-// }
+%marginLess {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 
-// #arena {
-//   mat-card:nth-of-type(1) {
-//     margin-bottom: 30px;
-//   }
-// }
-
-// #begin-ranking-button {
-//   width: 360px;
-//   height: 72px;
-//   font-size: 28px;
-// }
-
-// @media (min-width: 700px) {
-//   #arena {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-around;
-//     width: 800px;
-
-//     mat-card:nth-of-type(1) {
-//       margin-bottom: 0;
-//     }
-//   }
-// }
-
-.flexbox {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+.container {
   height: 100%;
-  width: 70%;
-  margin: auto;
-  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 180px;
+  // border: 10px solid $accent;
+  border: 10px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.player-logo {
+  height: 80px;
+  width: 80px;
+  // border: 10px solid $accent;
+  border: 10px solid #fff;
+  position: relative;
+  bottom: 32px;
+  background: white;
+}
+
+.player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-container {
+  text-align: center;
+}
+
+.player-name {
+  @extend %marginLess;
+  color: $warn;
+  font-size: 24px;
+}
+
+.player-info {
+  @extend %marginLess;
+  color: $accent;
+  font-size: 18px;
+}
+
+.player-card:hover {
+  border: 10px solid $green;
+  border-radius: 50%;
+  .player-logo {
+    border: 10px solid $green;
+    border-radius: 50%;
+  }
+}
+
+@media (min-width: 760px) {
+  #player-arena {
+    display: flex;
+    width: 70%;
+    max-width: 800px;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 760px) {
+  .player-container:nth-of-type(1) {
+    margin-bottom: 30px;
+  }
 }
