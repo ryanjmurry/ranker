@@ -108,10 +108,10 @@ $app-warn: mat-palette($md-warn);
 $primary: mat-color($app-primary);
 $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
-
-$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
-
 $green: #14a76c;
 $yellow: #ffe400;
+// $blue: #19deff;
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 
 @include angular-material-theme($app-theme);
