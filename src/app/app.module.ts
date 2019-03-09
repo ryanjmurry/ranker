@@ -10,9 +10,10 @@ import { RankerComponent } from './ranker/ranker.component';
 import { environment } from '../environments/environment';
 import { NbaService } from './services/nba.service';
 import { ErrorComponent } from './shared/components/error/error.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
-  declarations: [AppComponent, RankerComponent, ErrorComponent],
+  declarations: [AppComponent, RankerComponent, ErrorComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
