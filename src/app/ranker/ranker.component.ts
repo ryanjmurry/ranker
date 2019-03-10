@@ -1,8 +1,11 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { Player } from '../player.model';
 import { NbaService } from '../services/nba.service';
 import { forkJoin } from 'rxjs';
 import { IDLIST } from './id-list';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
+import { InstructionsDialogComponent } from '../shared/dialogs/instructions-dialog/instructions-dialog.component';
+import { KEY_CODE } from './key-code.enum';
 
 @Component({
   selector: 'app-ranker',
@@ -15,14 +18,57 @@ export class RankerComponent implements OnInit, OnDestroy {
   audioIsPlaying: boolean = false;
   playerIdList: string[] = IDLIST;
   playerList: Player[] = [];
+  windowSize: number;
+  winnerStays: boolean = false;
+  useArrows: boolean = false;
 
-  constructor(private nbaService: NbaService) {}
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    if (event.keyCode === KEY_CODE.LEFT_ARROW && this.windowSize >= 760 && this.useArrows) {
+      this.submitRanking(this.playerList[0].mfsId);
+    }
+
+    if (event.keyCode === KEY_CODE.RIGHT_ARROW && this.windowSize >= 760 && this.useArrows) {
+      this.submitRanking(this.playerList[1].mfsId);
+    }
+
+    if (event.keyCode === KEY_CODE.UP_ARROW && this.windowSize < 760 && this.useArrows) {
+      this.submitRanking(this.playerList[0].mfsId);
+    }
+
+    if (event.keyCode === KEY_CODE.DOWN_ARROW && this.windowSize < 760 && this.useArrows) {
+      this.submitRanking(this.playerList[1].mfsId);
+    }
+  }
+
+  constructor(private nbaService: NbaService, private dialog: MatDialog) {}
 
   ngOnInit() {
+    if (!localStorage.getItem('instructed')) {
+      setTimeout(() => {
+        this.openDialog();
+      });
+    }
+    // this.openDialog();
+    this.windowSize = window.innerWidth;
     this.audio.loop = true;
     this.audio.currentTime = 8;
     this.handleAudio();
     this.beginRanking();
+  }
+
+  openDialog() {
+    const dialogConfig: MatDialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = false;
+    const dialogRef: MatDialogRef<InstructionsDialogComponent> = this.dialog.open(
+      InstructionsDialogComponent,
+      dialogConfig
+    );
+
+    dialogRef.afterClosed().subscribe(() => {
+      localStorage.setItem('instructed', 'true');
+    });
   }
 
   beginRanking(): void {
@@ -41,11 +87,27 @@ export class RankerComponent implements OnInit, OnDestroy {
     this.fetchNewPlayers(id1, id2);
   }
 
+  getNewPlayer(winnerIndex: number, loserIndex: number): void {
+    let id1: string = this.playerList[winnerIndex].mfsId;
+    let id2: string;
+    do {
+      id2 = this.randomPlayerId();
+    } while (id1 === id2);
+    this.fetchNewPlayer(id2, loserIndex);
+  }
+
+  fetchNewPlayer(id2: string, newPlayerIndex: number): void {
+    this.nbaService.getPlayer(id2).subscribe(player => {
+      this.playerList[newPlayerIndex] = player;
+      this.loading = false;
+    });
+  }
+
   fetchNewPlayers(id1: string, id2: string): void {
     forkJoin(this.nbaService.getPlayer(id1), this.nbaService.getPlayer(id2)).subscribe(
       ([p1, p2]) => {
-        this.playerList.push(p1);
-        this.playerList.push(p2);
+        this.playerList[0] = p1;
+        this.playerList[1] = p2;
         console.log(this.playerList);
         this.loading = false;
       }
@@ -65,8 +127,11 @@ export class RankerComponent implements OnInit, OnDestroy {
       this.nbaService.setPlayer(this.playerList[0]),
       this.nbaService.setPlayer(this.playerList[1])
     ).subscribe(() => {
-      this.getNewPlayers();
-      this.loading = false;
+      if (this.winnerStays) {
+        this.getNewPlayer(this.playerList.indexOf(winner), this.playerList.indexOf(loser));
+      } else {
+        this.getNewPlayers();
+      }
     });
   }
 
@@ -119,6 +184,10 @@ export class RankerComponent implements OnInit, OnDestroy {
   handleAudio() {
     this.audio.paused ? this.audio.play() : this.audio.pause();
     this.audioIsPlaying = this.audio.paused ? false : true;
+  }
+
+  onResize(event) {
+    this.windowSize = event.target.innerWidth;
   }
 
   ngOnDestroy() {
