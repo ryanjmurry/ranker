@@ -1,3 +1,25 @@
+<h1 class="hero-text">King of the Hill</h1>
+<div class="player-container" *ngIf="!loading">
+  <mat-card class="player-card mat-elevation-z0">
+    <div class="img-container">
+      <img
+        src="{{ leader.img }}"
+        alt="NBA Player"
+        class="player-img"
+        onerror="this.onerror=null;this.src='../../assets/default-player.png'"
+      />
+    </div>
+    <img mat-card-avatar src="{{ leader.teamLogo }}" alt="NBA Logo" class="player-logo" />
+  </mat-card>
+  <div class="info-container">
+    <h1 class="player-name">
+      {{ leader.firstName | uppercase }} {{ leader.lastName | uppercase }}
+    </h1>
+    <h2 class="player-info">
+      {{ getPlayerPosition(leader.position) | uppercase }} {{ getJerseyNumber(leader) }}
+    </h2>
+  </div>
+</div>
 <div id="data-table-filter">
   <mat-form-field>
     <mat-label>Search</mat-label>
@@ -54,6 +76,7 @@
       [pageSizeOptions]="[5, 10, 25, 100]"
       showFirstLastButtons
       class="paginator"
+      id="leaderboard-paginator"
     ></mat-paginator>
   </div>
 </div>
