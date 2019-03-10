@@ -11,9 +11,10 @@ import { environment } from '../environments/environment';
 import { NbaService } from './services/nba.service';
 import { ErrorComponent } from './shared/components/error/error.component';
 import { HomeComponent } from './home/home.component';
+import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 
 @NgModule({
-  declarations: [AppComponent, RankerComponent, ErrorComponent, HomeComponent],
+  declarations: [AppComponent, RankerComponent, ErrorComponent, HomeComponent, LeaderboardComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,14 +1,23 @@
 @import '../theme.scss';
 
-.brand {
+.toolbar-item {
   cursor: pointer;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
-.brand:active,
-.brand:focus {
+.toolbar-item:active,
+.toolbar-item:focus {
   outline: 0;
   border: none;
+}
+
+.toolbar-item:hover {
+  color: $green;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 .body {
