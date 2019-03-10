@@ -36,20 +36,20 @@ $md-primary: (
 );
 
 $md-accent: (
-  50: #eeeeee,
-  100: #d5d5d5,
-  200: #bababa,
-  300: #9e9e9e,
-  400: #898989,
-  500: #747474,
-  600: #6c6c6c,
-  700: #616161,
-  800: #575757,
-  900: #444444,
-  A100: #f6aeae,
-  A200: #f18080,
-  A400: #ff3f3f,
-  A700: #ff2525,
+  50: #e3f4ed,
+  100: #b9e5d3,
+  200: #8ad3b6,
+  300: #5bc198,
+  400: #37b482,
+  500: #14a76c,
+  600: #129f64,
+  700: #0e9659,
+  800: #0b8c4f,
+  900: #067c3d,
+  A100: #aaffcd,
+  A200: #77ffae,
+  A400: #44ff90,
+  A700: #2bff81,
   contrast: (
     50: #000000,
     100: #000000,
@@ -63,8 +63,8 @@ $md-accent: (
     900: #ffffff,
     A100: #000000,
     A200: #000000,
-    A400: #ffffff,
-    A700: #ffffff
+    A400: #000000,
+    A700: #000000
   )
 );
 
@@ -110,6 +110,7 @@ $accent: mat-color($app-accent);
 $warn: mat-color($app-warn);
 $green: #14a76c;
 $yellow: #ffe400;
+$grey: #747474;
 // $blue: #19deff;
 
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
