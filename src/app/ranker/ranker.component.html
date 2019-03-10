@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" (window:resize)="onResize($event)" (keydown.arrowleft)="console($event)">
   <mat-spinner *ngIf="loading" color="warn"></mat-spinner>
   <div id="player-arena" *ngIf="!loading">
-    <ng-container *ngFor="let player of playerList">
+    <ng-container *ngFor="let player of playerList; let i = index">
       <div class="player-container">
         <mat-card class="player-card mat-elevation-z0" (click)="submitRanking(player.mfsId)">
           <div class="img-container">
@@ -23,11 +23,39 @@
           </h2>
         </div>
       </div>
+      <div *ngIf="i === 0 && windowSize >= 760">
+        <h1 class="versus">VS</h1>
+      </div>
     </ng-container>
   </div>
-  <button mat-mini-fab (click)="handleAudio()" class="toggle-audio" color="warn" *ngIf="!loading">
+  <button mat-mini-fab (click)="handleAudio()" class="toggle-audio" color="warn">
     <mat-icon aria-label="icon-button with a volume icon">
       {{ audioIsPlaying ? 'volume_up' : 'volume_off' }}
     </mat-icon>
   </button>
+
+  <button mat-mini-fab [matMenuTriggerFor]="settings" class="toggle-settings" id="toggle-settings">
+    <mat-icon aria-label="icon-button with a settings gear">
+      settings
+    </mat-icon>
+  </button>
+  <mat-menu #settings="matMenu">
+    <button mat-menu-item class="menu-item">
+      <mat-icon>clear</mat-icon>
+      <span>Close</span>
+    </button>
+    <button mat-menu-item class="menu-item">
+      <mat-slide-toggle [(ngModel)]="winnerStays" (click)="$event.stopPropagation()">
+        <span>Winner Stays</span>
+      </mat-slide-toggle>
+    </button>
+    <button mat-menu-item class="menu-item">
+      <mat-slide-toggle [(ngModel)]="useArrows" (click)="$event.stopPropagation()">
+        <span>Select Using Arrows</span>
+        <span>
+          <mat-icon> {{ windowSize >= 760 ? 'swap_horiz' : 'swap_vert' }} </mat-icon>
+        </span>
+      </mat-slide-toggle>
+    </button>
+  </mat-menu>
 </div>
