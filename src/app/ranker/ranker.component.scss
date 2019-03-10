@@ -19,7 +19,7 @@
   align-items: center;
   height: 180px;
   width: 180px;
-  // border: 10px solid $accent;
+  // border: 10px solid $grey;
   border: 10px solid #fff;
   border-radius: 50%;
   cursor: pointer;
@@ -28,7 +28,7 @@
 .player-logo {
   height: 80px;
   width: 80px;
-  // border: 10px solid $accent;
+  // border: 10px solid $grey;
   border: 10px solid #fff;
   position: relative;
   bottom: 32px;
@@ -54,7 +54,7 @@
 
 .player-info {
   @extend %marginLess;
-  color: $accent;
+  color: $grey;
   font-size: 18px;
 }
 
@@ -62,6 +62,31 @@
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+.toggle-settings {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: $grey;
+  color: white;
+}
+
+#toggle-settings {
+  background-color: $grey;
+  color: white;
+}
+
+.versus {
+  font-size: 72px;
+  color: $grey;
+}
+
+.menu-item {
+  span {
+    font-weight: bold;
+    font-size: 16px;
+  }
 }
 
 .player-card:hover {
@@ -76,9 +101,11 @@
 @media (min-width: 760px) {
   #player-arena {
     display: flex;
-    width: 70%;
-    max-width: 800px;
+    // width: 70%;
+    // max-width: 800px;
+    width: 720px;
     justify-content: space-between;
+    align-items: center;
   }
 }
 
