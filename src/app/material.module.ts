@@ -9,6 +9,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatCardModule } from '@angular/material/card';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @NgModule({
   declarations: [],
@@ -22,7 +27,12 @@ import { MatCardModule } from '@angular/material/card';
     MatListModule,
     MatProgressSpinnerModule,
     MatProgressBarModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatTableModule,
+    MatSlideToggleModule
   ]
 })
 export class MaterialModule {}
