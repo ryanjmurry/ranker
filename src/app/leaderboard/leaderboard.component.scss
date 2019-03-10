@@ -1,0 +1,42 @@
+@import '../../theme.scss';
+
+.container {
+  position: relative;
+}
+
+.table-container {
+  position: relative;
+  overflow: auto;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+#data-table-filter {
+  display: flex;
+  justify-content: center;
+}
+
+mat-label {
+  color: #fff;
+}
+
+input {
+  color: $warn;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: $warn;
+}
