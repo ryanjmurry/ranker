@@ -15,7 +15,7 @@ export class NbaService {
 
   getPlayerData() {
     return this.afs
-      .collection<Player>('players', ref => ref.orderBy('winPercentage', 'desc'))
+      .collection<Player>('players', ref => ref.orderBy('winPercentage', 'desc').limit(10))
       .valueChanges();
   }
 
