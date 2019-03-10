@@ -58,6 +58,12 @@
   font-size: 18px;
 }
 
+.toggle-audio {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
 .player-card:hover {
   border: 10px solid $green;
   border-radius: 50%;

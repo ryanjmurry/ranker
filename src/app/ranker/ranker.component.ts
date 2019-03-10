@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Player } from '../player.model';
 import { NbaService } from '../services/nba.service';
 import { forkJoin } from 'rxjs';
@@ -9,25 +9,19 @@ import { IDLIST } from './id-list';
   templateUrl: './ranker.component.html',
   styleUrls: ['./ranker.component.scss']
 })
-export class RankerComponent implements OnInit {
+export class RankerComponent implements OnInit, OnDestroy {
+  audio = new Audio('../../assets/ranker-audio.mp3');
   loading: boolean = true;
+  audioIsPlaying: boolean = false;
   playerIdList: string[] = IDLIST;
   playerList: Player[] = [];
 
   constructor(private nbaService: NbaService) {}
 
   ngOnInit() {
-    // this.loading = true;
-    // if (localStorage.getItem('playerIdArr')) {
-    //   this.playerIdList = JSON.parse(localStorage.getItem('playerIdArr'));
-    // } else
-    // this.nbaService.getAllPlayers().subscribe(data => {
-    //   data.forEach(doc => {
-    //     this.playerIdList.push(doc.payload.doc.id);
-    //   });
-    //   console.log(this.playerIdList);
-    // });
-    // this.loading = false;
+    this.audio.loop = true;
+    this.audio.currentTime = 8;
+    this.handleAudio();
     this.beginRanking();
   }
 
@@ -37,6 +31,7 @@ export class RankerComponent implements OnInit {
   }
 
   getNewPlayers(): void {
+    this.playerList = [];
     let id1: string;
     let id2: string;
     do {
@@ -55,6 +50,30 @@ export class RankerComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  submitRanking(playerId: string) {
+    this.loading = true;
+    const winner = this.playerList.find(player => player.mfsId === playerId);
+    const loser = this.playerList.find(player => player.mfsId !== playerId);
+    winner.wins++;
+    loser.losses++;
+    this.playerList.forEach(player => {
+      this.calculteWinPercentage(player);
+    });
+    forkJoin(
+      this.nbaService.setPlayer(this.playerList[0]),
+      this.nbaService.setPlayer(this.playerList[1])
+    ).subscribe(() => {
+      this.getNewPlayers();
+      this.loading = false;
+    });
+  }
+
+  calculteWinPercentage(player: Player) {
+    const wins = player.wins;
+    const totalGames = player.wins + player.losses;
+    player.winPercentage = parseFloat(((wins / totalGames) * 100).toFixed(2));
   }
 
   randomPlayerId(): string {
@@ -95,5 +114,14 @@ export class RankerComponent implements OnInit {
     } else {
       return;
     }
+  }
+
+  handleAudio() {
+    this.audio.paused ? this.audio.play() : this.audio.pause();
+    this.audioIsPlaying = this.audio.paused ? false : true;
+  }
+
+  ngOnDestroy() {
+    this.audio.src = '';
   }
 }

@@ -3,11 +3,16 @@
   <div id="player-arena" *ngIf="!loading">
     <ng-container *ngFor="let player of playerList">
       <div class="player-container">
-        <mat-card class="player-card mat-elevation-z0">
+        <mat-card class="player-card mat-elevation-z0" (click)="submitRanking(player.mfsId)">
           <div class="img-container">
-            <img src="{{ player.img }}" alt="NBA Player" class="player-img" />
+            <img
+              src="{{ player.img }}"
+              alt="NBA Player"
+              class="player-img"
+              onerror="this.onerror=null;this.src='../../assets/default-player.png'"
+            />
           </div>
-          <img mat-card-avatar src="{{ player.team.logo }}" alt="NBA Logo" class="player-logo" />
+          <img mat-card-avatar src="{{ player.teamLogo }}" alt="NBA Logo" class="player-logo" />
         </mat-card>
         <div class="info-container">
           <h1 class="player-name">
@@ -20,4 +25,9 @@
       </div>
     </ng-container>
   </div>
+  <button mat-mini-fab (click)="handleAudio()" class="toggle-audio" color="warn" *ngIf="!loading">
+    <mat-icon aria-label="icon-button with a volume icon">
+      {{ audioIsPlaying ? 'volume_up' : 'volume_off' }}
+    </mat-icon>
+  </button>
 </div>
