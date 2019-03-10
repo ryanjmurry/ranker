@@ -13,10 +13,23 @@ export class NbaService {
     return this.afs.collection<Player>('players').snapshotChanges();
   }
 
+  getPlayerData() {
+    return this.afs
+      .collection<Player>('players', ref => ref.orderBy('winPercentage', 'desc'))
+      .valueChanges();
+  }
+
   getPlayer(id: string) {
     return this.afs
       .doc<Player>(`players/${id}`)
       .valueChanges()
       .pipe(take(1));
+  }
+
+  setPlayer(player: Player) {
+    return this.afs
+      .collection('players')
+      .doc(player.mfsId.toString())
+      .set(Object.assign({}, player));
   }
 }
