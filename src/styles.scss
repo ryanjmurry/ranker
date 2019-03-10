@@ -9,3 +9,19 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
   background-color: $primary;
 }
+
+#data-table-filter {
+  .mat-form-field-ripple {
+    background-color: $warn;
+  }
+  .mat-input-element {
+    caret-color: $warn;
+  }
+  .mat-input {
+    color: $warn;
+  }
+
+  .mat-form-field-underline {
+    background-color: $warn;
+  }
+}
