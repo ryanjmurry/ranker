@@ -7,16 +7,16 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   audio = new Audio('../../assets/theme.mp3');
-  isLoading: boolean = false;
+  loading: boolean = false;
   audioIsPlaying: boolean = false;
   constructor() {}
 
   ngOnInit() {
     this.audio.loop = true;
-    this.isLoading = true;
+    this.loading = true;
     setTimeout(() => {
       this.handleAudio();
-      this.isLoading = false;
+      this.loading = false;
     }, 2000);
   }
 
