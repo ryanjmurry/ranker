@@ -11,16 +11,24 @@ A web application designed to take aggregate user data to determine who the best
 This program is dependent that you already have node and node package manager installed. To install, navigate to [the Node.js website](https://nodejs.org/en/).
 
 Clone the repository from GitHub
+
 `https://github.com/ryanjmurry/ranker.git`
 
 Navigate into the project directory
+
 `cd ranker/`
 
 From the project directory run
+
 `npm install`
 
 To run the application, run
-`npm start` or, if the Angular CLI is installed, `ng serve`
+
+`npm start`
+
+or, if the Angular CLI is installed, run
+
+`ng serve`
 
 ## Support and contact details
 
