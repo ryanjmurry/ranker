@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,7 +34,7 @@ import { InstructionsDialogComponent } from './shared/dialogs/instructions-dialo
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [NbaService],
+  providers: [NbaService, { provide: FirestoreSettingsToken, useValue: {} }],
   entryComponents: [InstructionsDialogComponent],
   bootstrap: [AppComponent]
 })
