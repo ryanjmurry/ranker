@@ -49,7 +49,6 @@ export class RankerComponent implements OnInit, OnDestroy {
         this.openDialog();
       });
     }
-    // this.openDialog();
     this.windowSize = window.innerWidth;
     this.audio.loop = true;
     this.audio.currentTime = 8;
@@ -70,6 +69,14 @@ export class RankerComponent implements OnInit, OnDestroy {
       localStorage.setItem('instructed', 'true');
     });
   }
+
+  // For Firefox Browser --> Need to detect and alter template
+  // stopClose(toggleName: string, event) {
+  //   toggleName === 'winner'
+  //     ? (this.winnerStays = !this.winnerStays)
+  //     : (this.useArrows = !this.useArrows);
+  //   event.stopPropagation();
+  // }
 
   beginRanking(): void {
     this.loading = true;
@@ -108,7 +115,6 @@ export class RankerComponent implements OnInit, OnDestroy {
       ([p1, p2]) => {
         this.playerList[0] = p1;
         this.playerList[1] = p2;
-        console.log(this.playerList);
         this.loading = false;
       }
     );
