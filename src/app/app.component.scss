@@ -1,0 +1,34 @@
+@import '../theme.scss';
+
+.toolbar-item {
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 24px;
+}
+
+.toolbar-item:active,
+.toolbar-item:focus {
+  outline: 0;
+  border: none;
+}
+
+.toolbar-item:hover {
+  color: $green;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 56px;
+  bottom: 0;
+}
+
+.active-link {
+  color: $green;
+}

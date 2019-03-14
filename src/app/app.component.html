@@ -1,1 +1,10 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <span class="toolbar-item" routerLink="/nba" routerLinkActive="active-link">ranker</span>
+  <span class="spacer"></span>
+  <span class="toolbar-item" routerLink="/leaderboard" routerLinkActive="active-link"
+    >leaderboard</span
+  >
+</mat-toolbar>
+<div class="body">
+  <router-outlet></router-outlet>
+</div>

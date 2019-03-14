@@ -3,20 +3,20 @@
 @include mat-core();
 
 $md-primary: (
-  50: #e1e3e5,
-  100: #b3b9be,
-  200: #808b93,
-  300: #4d5c68,
-  400: #273947,
-  500: #011627,
-  600: #011323,
-  700: #01101d,
-  800: #010c17,
-  900: #00060e,
-  A100: #517aff,
-  A200: #1e53ff,
-  A400: #0037ea,
-  A700: #0031d0,
+  50: #e5e5e5,
+  100: #bebebe,
+  200: #939393,
+  300: #686868,
+  400: #474747,
+  500: #272727,
+  600: #232323,
+  700: #1d1d1d,
+  800: #171717,
+  900: #0e0e0e,
+  A100: #eb6969,
+  A200: #e53c3c,
+  A400: #ee0000,
+  A700: #d40000,
   contrast: (
     50: #000000,
     100: #000000,
@@ -28,7 +28,7 @@ $md-primary: (
     700: #ffffff,
     800: #ffffff,
     900: #ffffff,
-    A100: #ffffff,
+    A100: #000000,
     A200: #ffffff,
     A400: #ffffff,
     A700: #ffffff
@@ -36,30 +36,30 @@ $md-primary: (
 );
 
 $md-accent: (
-  50: #e6f8f6,
-  100: #c0ede9,
-  200: #97e2db,
-  300: #6dd6cc,
-  400: #4dcdc1,
-  500: #2ec4b6,
-  600: #29beaf,
-  700: #23b6a6,
-  800: #1daf9e,
-  900: #12a28e,
-  A100: #d3fff8,
-  A200: #a0fff1,
-  A400: #6dffe9,
-  A700: #53ffe6,
+  50: #e3f4ed,
+  100: #b9e5d3,
+  200: #8ad3b6,
+  300: #5bc198,
+  400: #37b482,
+  500: #14a76c,
+  600: #129f64,
+  700: #0e9659,
+  800: #0b8c4f,
+  900: #067c3d,
+  A100: #aaffcd,
+  A200: #77ffae,
+  A400: #44ff90,
+  A700: #2bff81,
   contrast: (
     50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
     400: #000000,
-    500: #000000,
-    600: #000000,
-    700: #000000,
-    800: #000000,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
     900: #ffffff,
     A100: #000000,
     A200: #000000,
@@ -69,29 +69,29 @@ $md-accent: (
 );
 
 $md-warn: (
-  50: #fce4e7,
-  100: #f8bbc3,
-  200: #f38e9b,
-  300: #ee6172,
-  400: #eb3f54,
-  500: #e71d36,
-  600: #e41a30,
-  700: #e01529,
-  800: #dd1122,
-  900: #d70a16,
+  50: #ffede6,
+  100: #ffd1c1,
+  200: #ffb297,
+  300: #ff936d,
+  400: #ff7c4e,
+  500: #ff652f,
+  600: #ff5d2a,
+  700: #ff5323,
+  800: #ff491d,
+  900: #ff3712,
   A100: #ffffff,
-  A200: #ffced0,
-  A400: #ff9b9f,
-  A700: #ff8186,
+  A200: #fffaf9,
+  A400: #ffcdc6,
+  A700: #ffb7ad,
   contrast: (
     50: #000000,
     100: #000000,
     200: #000000,
     300: #000000,
-    400: #ffffff,
+    400: #000000,
     500: #ffffff,
-    600: #ffffff,
-    700: #ffffff,
+    600: #000000,
+    700: #000000,
     800: #ffffff,
     900: #ffffff,
     A100: #000000,
@@ -104,6 +104,14 @@ $md-warn: (
 $app-primary: mat-palette($md-primary);
 $app-accent: mat-palette($md-accent);
 $app-warn: mat-palette($md-warn);
+
+$primary: mat-color($app-primary);
+$accent: mat-color($app-accent);
+$warn: mat-color($app-warn);
+$green: #14a76c;
+$yellow: #ffe400;
+$grey: #747474;
+// $blue: #19deff;
 
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 

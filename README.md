@@ -1,27 +1,41 @@
-# Ranker
+# NBA Ranker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+#### By Ryan Murry, 03.13.19
 
-## Development server
+## Description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+A web application designed to take aggregate user data to determine who the best player in the NBA currently is. A user is presented with two random NBA players, and they select who they think is better. Users can navigate to the leaderboard to see a list of all players, their wins, losses, and winning percentage.
 
-## Code scaffolding
+## Setup/Installation Requirements
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This program is dependent that you already have node and node package manager installed. To install, navigate to [the Node.js website](https://nodejs.org/en/).
 
-## Build
+Clone the repository from GitHub
+`https://github.com/ryanjmurry/ranker.git`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Navigate into the project directory
+`cd ranker/`
 
-## Running unit tests
+From the project directory run
+`npm install`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+To run the application, run
+`npm start` or, if the Angular CLI is installed, `ng serve`
 
-## Running end-to-end tests
+## Support and contact details
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Any issues or questions please feel free to [email me](mailto:ryanjmurry@gmail.com)
 
-## Further help
+## Technologies Used
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Angular 7
+- Angular Material
+- AngularFire2
+- Firebase
+- Firestore
+
+### License
+
+This software is license under the MIT license.
+
+Copyright (c) 2019 **Ryan Murry**

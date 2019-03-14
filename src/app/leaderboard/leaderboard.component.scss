@@ -1,0 +1,101 @@
+@import '../../theme.scss';
+
+%marginLess {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.padded-container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.hero-text {
+  text-align: center;
+  text-transform: uppercase;
+  color: $warn;
+  font-size: 42px;
+  margin-bottom: 0;
+}
+
+.table-outer-container {
+  position: relative;
+}
+
+.table-container {
+  position: relative;
+  overflow: auto;
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+table {
+  width: 100%;
+}
+
+mat-label {
+  color: #fff;
+}
+
+input {
+  color: $warn;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: $warn;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+  width: 180px;
+  // border: 10px solid $grey;
+  border: 10px solid $green;
+  border-radius: 50%;
+}
+
+.player-logo {
+  height: 80px;
+  width: 80px;
+  // border: 10px solid $grey;
+  border: 10px solid $green;
+  position: relative;
+  bottom: 32px;
+  background: white;
+}
+
+.player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.info-container {
+  text-align: center;
+}
+
+.player-name {
+  @extend %marginLess;
+  color: $warn;
+  font-size: 24px;
+}
+
+.player-info {
+  @extend %marginLess;
+  color: $grey;
+  font-size: 18px;
+}

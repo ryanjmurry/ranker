@@ -1,4 +1,71 @@
-/* You can add global styles to this file, and also import other style files */
+@import './theme.scss';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  background-color: $primary;
+}
+
+#data-table-filter {
+  .mat-form-field-ripple {
+    background-color: $warn;
+  }
+  .mat-input-element {
+    caret-color: $warn;
+  }
+  .mat-input {
+    color: $warn;
+  }
+
+  .mat-form-field-underline {
+    background-color: $warn;
+  }
+}
+
+#leaderboard {
+  background: $primary;
+
+  .mat-header-cell {
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .mat-cell {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .mat-sort-header-arrow {
+    color: $warn;
+  }
+
+  th.mat-header-cell {
+    border-bottom-color: #fff;
+  }
+
+  td.mat-cell {
+    border-bottom-color: #fff;
+  }
+}
+
+#leaderboard-paginator {
+  background: $primary;
+  color: #fff;
+
+  .mat-select-value {
+    color: #fff;
+  }
+
+  .mat-select-arrow {
+    color: #fff;
+  }
+
+  .mat-form-field-underline {
+    background-color: $warn;
+  }
+}
