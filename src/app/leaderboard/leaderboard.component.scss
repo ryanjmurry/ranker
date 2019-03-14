@@ -5,6 +5,11 @@
   margin-bottom: 0;
 }
 
+.padded-container {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
 .hero-text {
   text-align: center;
   text-transform: uppercase;
@@ -13,7 +18,7 @@
   margin-bottom: 0;
 }
 
-.container {
+.table-outer-container {
   position: relative;
 }
 
@@ -37,11 +42,6 @@ table {
   width: 100%;
 }
 
-// #data-table-filter {
-//   display: flex;
-//   justify-content: center;
-// }
-
 mat-label {
   color: #fff;
 }
@@ -64,7 +64,6 @@ input {
   // border: 10px solid $grey;
   border: 10px solid $green;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 .player-logo {
@@ -82,6 +81,7 @@ input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 25px;
 }
 
 .info-container {
